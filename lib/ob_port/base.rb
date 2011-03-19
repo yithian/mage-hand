@@ -39,7 +39,7 @@ module MageHand
             end
           end
         CODE
-        puts code
+        puts code if ENV['DEBUG']
         module_eval code
       end
     end

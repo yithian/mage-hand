@@ -16,4 +16,5 @@ group :development do
   gem "rcov", ">= 0"
   gem "mocha", ">=0.9.8"
   gem "redgreen"
+  gem "webmock", ">=1.6.2"
 end

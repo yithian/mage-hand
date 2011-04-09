@@ -22,6 +22,24 @@ module MageHand
     def self.model_name
       @_model_name ||= ActiveModel::Name.new(self)
     end
+
+    def self.attr_instance(method_name, options={})
+       self.class_eval do
+        name = method_name.to_s
+        class_name = options[:class_name] || name.singularize.classify
+        code = <<-CODE
+          def #{name}
+            @#{name}
+          end
+
+          def #{name}=(new_#{name})
+            @#{name} = #{class_name}.new(new_#{name.singularize})
+          end
+        CODE
+        puts code if ENV['DEBUG']
+        module_eval code
+      end
+    end
     
     def self.attr_array(method_name, options={})
       self.class_eval do

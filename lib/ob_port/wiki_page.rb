@@ -10,7 +10,7 @@ module MageHand
     inflate_if_nil :body, :body_html
     
     # TODO Move these to the posts subclass when we have it.
-    attr_accessor :post_title, :post_taglines, :post_time
+    attr_accessor :post_title, :post_tagline, :post_time
     
     # GM Only fields
     attr_accessor :game_master_info, :game_master_info_markup

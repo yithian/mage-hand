@@ -5,8 +5,9 @@ module MageHand
     # public mini-object methods
     attr_accessor :name, :campaign_url, :role, :visibility
     
-    attr_accessor :game_master_id, :slug
-    inflate_if_nil :game_master_id, :slug
+    attr_accessor :slug
+    attr_instance :game_master, :class_name => 'User'
+    inflate_if_nil :game_master, :slug
     
     # Private/Friends
     attr_accessor :banner_image_url, :play_status, :looking_for_players, :created_at, :updated_at
@@ -18,6 +19,16 @@ module MageHand
     
     attr_array :players, :class_name => 'User'
     inflate_if_nil :players
+
+    def self.find_by_slug(slug)
+      hash = JSON.parse( MageHand::client.access_token.get("/v1/campaigns/#{slug}.json?use_slug=true").body)
+      Campaign.new(hash)
+    end
+
+    def self.find(id)
+      hash = JSON.parse( MageHand::client.access_token.get("/v1/campaigns/#{id}.json").body)
+      Campaign.new(hash)
+    end
     
     def looking_for_players?
       looking_for_players

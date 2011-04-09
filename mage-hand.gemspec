@@ -9,12 +9,13 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Steven Hammond"]
-  s.date = %q{2011-03-03}
+  s.date = %q{2011-04-09}
   s.description = %q{mage-hand is a ghostly hand that reaches across the internet to access the Obsidian Portal API.}
   s.email = %q{shammond@northpub.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.rdoc",
+    "TODO"
   ]
   s.files = [
     ".document",
@@ -23,6 +24,7 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
+    "TODO",
     "VERSION",
     "lib/mage-hand.rb",
     "lib/ob_port/base.rb",
@@ -32,6 +34,7 @@ Gem::Specification.new do |s|
     "lib/ob_port/wiki_page.rb",
     "mage-hand.gemspec",
     "test/helper.rb",
+    "test/test_campaign.rb",
     "test/test_client.rb",
     "test/test_mage-hand.rb"
   ]
@@ -42,6 +45,7 @@ Gem::Specification.new do |s|
   s.summary = %q{Ruby wrapper around the Obsidian Portal API}
   s.test_files = [
     "test/helper.rb",
+    "test/test_campaign.rb",
     "test/test_client.rb",
     "test/test_mage-hand.rb"
   ]
@@ -61,6 +65,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rcov>, [">= 0"])
       s.add_development_dependency(%q<mocha>, [">= 0.9.8"])
       s.add_development_dependency(%q<redgreen>, [">= 0"])
+      s.add_development_dependency(%q<webmock>, [">= 1.6.2"])
       s.add_runtime_dependency(%q<oauth>, [">= 0.4.4"])
     else
       s.add_dependency(%q<oauth>, [">= 0.4.4"])
@@ -73,6 +78,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rcov>, [">= 0"])
       s.add_dependency(%q<mocha>, [">= 0.9.8"])
       s.add_dependency(%q<redgreen>, [">= 0"])
+      s.add_dependency(%q<webmock>, [">= 1.6.2"])
       s.add_dependency(%q<oauth>, [">= 0.4.4"])
     end
   else
@@ -86,6 +92,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rcov>, [">= 0"])
     s.add_dependency(%q<mocha>, [">= 0.9.8"])
     s.add_dependency(%q<redgreen>, [">= 0"])
+    s.add_dependency(%q<webmock>, [">= 1.6.2"])
     s.add_dependency(%q<oauth>, [">= 0.4.4"])
   end
 end

@@ -1,0 +1,8 @@
+Campaigns:
+  Handle location properly
+  Should be able to initialize from a json tring or an attribute hash
+
+Bootstrapping:
+  Handle missing config file
+  
+  

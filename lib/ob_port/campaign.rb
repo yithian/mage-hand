@@ -35,7 +35,7 @@ module MageHand
        @adventure_logs ||= wiki_pages.select{|page| page.is_post?}
      end
      
-     private
+     protected
 
      def individual_url
        "/v1/campaigns/#{self.id}.json"

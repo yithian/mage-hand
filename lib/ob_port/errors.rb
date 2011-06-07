@@ -1,0 +1,2 @@
+class OAuthConfigurationError < StandardError
+end

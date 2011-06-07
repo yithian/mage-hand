@@ -6,7 +6,7 @@ require 'ob_port/base'
 require 'ob_port/user'
 require 'ob_port/campaign'
 require 'ob_port/wiki_page'
-
+require 'ob_port/errors'
 module MageHand
   def self.set_app_keys(app_key, app_secret)
     Client.set_app_keys(app_key, app_secret)

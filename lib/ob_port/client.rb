@@ -38,6 +38,8 @@ module MageHand
     end
     
     def consumer
+      raise (OAuthConfigurationError, "Need to set application key and secret before initializing a consumer.") unless
+        @@key && @@secret
       @consumer ||= OAuth::Consumer.new( @@key, @@secret, {
         :site => 'http://api.obsidianportal.com',
         :request_token_url => 'https://www.obsidianportal.com/oauth/request_token',
@@ -62,6 +64,8 @@ module MageHand
     protected
     
     def self.reset_client
+      @@key = nil
+      @@secret = nil
       @@client = nil
     end
   end

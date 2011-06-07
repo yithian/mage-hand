@@ -5,6 +5,13 @@ class TestClient < Test::Unit::TestCase
     should "configure correctly with a key and secret" do
       assert_nothing_raised {MageHand::Client.set_app_keys('asdfasdf','asdfasdfasdfasdfasdf')} 
     end
+    should "raise an exception when the app keys are not set" do
+      assert_raise(OAuthConfigurationError) do
+        # @request_token = stub('request token')
+        MageHand::Client.send(:reset_client)
+        MageHand::get_client
+      end
+    end
   end
   
   context "An instance of the client" do

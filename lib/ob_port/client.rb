@@ -1,12 +1,23 @@
 module MageHand
   class Client
     attr_accessor :request_token, :access_token_key, :access_token_secret
+    @@client = nil
     
-    def self.configure(key, secret)
+    def self.set_app_keys(key, secret)
       @@key = key
       @@secret = secret
     end
-        
+    
+    def self.get_client(session_request_token=nil, session_access_token_key=nil, session_access_token_secret=nil,
+        callback=nil, params=nil)
+      # If we don't have a client, or we are changing a token, initialize a new client
+      if !@@client || session_request_token || session_access_token_key || session_access_token_secret
+        @@client = Client.new(session_request_token, session_access_token_key,
+          session_access_token_secret, callback, params)
+      end
+      @@client
+    end
+    
     def initialize(session_request_token=nil, session_access_token_key=nil, session_access_token_secret=nil,
         callback=nil, params=nil)
       @request_token = session_request_token
@@ -46,6 +57,12 @@ module MageHand
     
     def campaign(id)
       MageHand::Campaign.new(JSON.parse(access_token.get("/v1/campaigns/#{id}.json").body))
+    end
+    
+    protected
+    
+    def self.reset_client
+      @@client = nil
     end
   end
 end

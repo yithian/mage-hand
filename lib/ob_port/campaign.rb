@@ -21,12 +21,12 @@ module MageHand
     inflate_if_nil :players
 
     def self.find_by_slug(slug)
-      hash = JSON.parse( MageHand::client.access_token.get("/v1/campaigns/#{slug}.json?use_slug=true").body)
+      hash = JSON.parse( MageHand::get_client.access_token.get("/v1/campaigns/#{slug}.json?use_slug=true").body)
       Campaign.new(hash)
     end
 
     def self.find(id)
-      hash = JSON.parse( MageHand::client.access_token.get("/v1/campaigns/#{id}.json").body)
+      hash = JSON.parse( MageHand::get_client.access_token.get("/v1/campaigns/#{id}.json").body)
       Campaign.new(hash)
     end
     

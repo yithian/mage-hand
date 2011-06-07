@@ -18,7 +18,7 @@ module MageHand
     
     def self.load_wiki_pages(campaign_id)
       wiki_hashes = JSON.parse(
-        MageHand::client.access_token.get(collection_url(campaign_id)).body)
+        MageHand::get_client.access_token.get(collection_url(campaign_id)).body)
       wiki_hashes.map {|hash| WikiPage.new(hash)}
     end
     

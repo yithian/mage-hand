@@ -8,11 +8,20 @@ require 'ob_port/campaign'
 require 'ob_port/wiki_page'
 
 module MageHand
+  def self.set_app_keys(app_key, app_secret)
+    Client.set_app_keys(app_key, app_secret)
+  end
+  
+  def self.get_client(session_request_token=nil, session_access_token_key=nil, session_access_token_secret=nil,
+      callback=nil, params=nil)
+    Client.get_client(session_request_token, session_access_token_key, session_access_token_secret,
+          callback, params)
+  end
   
   protected
   
   def obsidian_portal_login_required
-    @mage_client = MageHand::Client.new(session[:request_token], session[:access_token_key], 
+    @mage_client = Client.get_client(session[:request_token], session[:access_token_key], 
       session[:access_token_secret], request.url, params)
     store_tokens
     return true if logged_in?

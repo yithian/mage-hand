@@ -15,7 +15,7 @@ module MageHand
     end
     
     def inflate
-      hash = JSON.parse( MageHand::client.access_token.get(individual_url).body)
+      hash = JSON.parse( MageHand::get_client.access_token.get(individual_url).body)
       update_attributes!(hash)
     end
     
@@ -26,7 +26,7 @@ module MageHand
     def self.attr_instance(method_name, options={})
        self.class_eval do
         name = method_name.to_s
-        class_name = options[:class_name] || name.singularize.classify
+        class_name = options[:class_name] || name.classify
         code = <<-CODE
           def #{name}
             @#{name}

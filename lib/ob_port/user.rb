@@ -7,7 +7,7 @@ module MageHand
 
     alias :is_ascendant? :is_ascendant
 
-    attr_array :campaigns, :class_name => 'Campaign'
+    attr_array :campaigns #, :class_name => 'Campaign'
     inflate_if_nil :campaigns
     
     private

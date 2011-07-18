@@ -1,4 +1,4 @@
-require 'OAuth'
+require 'oauth'
 require 'json'
 require 'active_support/core_ext/string'
 require 'ob_port/client'

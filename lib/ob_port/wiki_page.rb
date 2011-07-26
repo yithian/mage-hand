@@ -29,6 +29,11 @@ module MageHand
     def is_post?
       type == 'Post'
     end
+
+    def save
+      json_page = JSON.generate({:wiki_page => { :body => self.body, :game_master_info => self.game_master_info, :is_game_master_only => self.is_game_master_only }})
+      MageHand::get_client.access_token.put("/v1/campaigns/#{self.campaign.id}/wikis/#{self.id}", json_page)
+    end
     
     private
     
